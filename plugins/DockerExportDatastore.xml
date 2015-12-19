@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>Docker backup volume datastore</menu_name>
+      <tab_name/>
+      <command_after_login>&lt;#gconftool-2 --type=string --set "/apps/guake-indicator/var" $(zenity --entry --title="Docker backup datastore" --text="Enter container to backup") 
+&lt;#gconftool-2 --type=string --set "/apps/guake-indicator/var2" $(zenity --entry --title="Docker backup datastore" --text="Enter path to backup") 
+docker run --rm --volumes-from &lt;!var!&gt; -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar  &lt;!var2!&gt;
+</command_after_login>
+      <dont_show_guake>no</dont_show_guake>
+      <lfcr>no</lfcr>
+      <guakeindicatorscript>yes</guakeindicatorscript>
+    </Host>
+  </HostGroup>
+</Configuration>

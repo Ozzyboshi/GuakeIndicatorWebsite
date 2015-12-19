@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>Ls tree</menu_name>
+      <tab_name/>
+      <command_after_login>ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'</command_after_login>
+      <dont_show_guake>no</dont_show_guake>
+    </Host>
+  </HostGroup>
+</Configuration>

@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://guake-indicator-1.0.ozzyboshi.com/favicon.ico">
+
+    <title>Guake indicator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+          
+    <div class="container">
+        <div class="row">
+            <div class="cover-container">
+            <div class="clearfix">
+                <div class="inner">
+                    
+                    <div class="title">
+                        <ul class="title">
+                        <li class="title"><img src="images/guake-indicator-icon.png"></li>
+                        <li class="title">Guake Indicator</li>
+                    </ul></div>
+                    
+                    
+                <nav>
+               <ul class="nav masthead-nav">
+                  <li ><a href="index.html">Home</a></li>
+                  <li><a href="instructions.html">Instructions</a></li>
+                  <li><a href="screenshots.html">Screenshots</a></li>
+                  <li><a href="downloads.html">Downloads</a></li>
+                  <li><a href="plugins.html">Plugins</a></li>
+                  <li class="active"><a href="scripting.html">Scripting</a></li>
+                  <li><a href="issues.html">Issues</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                  <li><a href="license.html">License</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          </div>
+        </div>
+         <div class="row">
+    
+<p>
+    
+    <a name="guakeindicatorscriptingsystem"></a>
+    <H3>Guake indicator scripting system</H3>
+        Guake indicator provides the ability to add some logic when building a command using the "scripting" feature.
+        To enable the "scripting" mode, the "Enable guake-indicator scripting" checkbox must be checked.
+    <br><br>
+        <p><img src="images/scriptingwindow.png"></p><br><br>
+        When the script mode is activated, Guake indicator treats the character sequences '&#60;#'  and '&#60;! ... !&#62;' in this way:<br><br>
+        <ul>
+            <li>&#60;# : Guake indicator sends a system call (invoking a /bin/sh subshell) of the inline command, for example: <pre>&#60;#sleep 2</pre> causes Guake indicator call /bin/sh/sleep 2 on localhost thus pausing the execution for 2 seconds. Keep in mind that Guake indicator will stop sending commands to Guake until the system call is done.<br><br></li>
+            <li>&#60;!..!&#62; : Guake indicator searchs for a gsettings key string value under '/apps/guake-indicator/' and pastes it to the command, for example: <pre>echo &#60;!testkey!&#62;</pre> causes Guake to send the command echo and the content of the key testkey as an argument. You can take advantage of the gconf-editor to inspect the gconf keys.</li>
+        </ul>
+    Scripting can be useful when working on remote shells and you want your localhost to interact with them.
+    For example let's say you want to test if a particular tcp port is open from a <u>remote</u> shell and you want to input the target ip and port from keyboard with your local zenity (https://help.gnome.org/users/zenity/stable/), you could try something like this:
+        <br><br>
+        <pre>
+        &#60;#gconftool-2 --type=string --set "/apps/guake-indicator/varip" $(zenity --entry --title="Enter dest ip" --text="Enter dest ip")
+        &#60;#gconftool-2 --type=string --set "/apps/guake-indicator/varport" $(zenity --entry --title="Enter dest port" --text="Enter dest port")
+        ssh user@whatever  nc -vn &#60;!varip!&#62; &#60;!varport!&#62;
+        </pre><br>
+        
+        In the above example Guake indicator calls Zenity to display an interactive form in your local machine.The stdout of Zenity is then passed as an argumento to gconftool-2.
+        Gconftool-2 stores the content as a value for /apps/guake-indicator/varip and /apps/guake-indicator/varport keys.
+        Finally Guake indicator send data through the dbus system replacing the !varip! and !varport! substrings with the values of the /apps/guake-indicator/varip and /apps/guake-indicator/varport keys.
+        In this way you can send dynamic,inaccessible local content to Guake.<br><br>
+        In the following screenshot I ssh into 10.0.0.4 then using Guake indicator+Zenity+gconftool-2 I scan 10.0.0.4:22 from 10.0.0.7:
+        <br><br><img class="img-responsive" src="images/guake-indicator-scripting.gif"> <br><br>
+    <figure id="dialog-box" class="warning">
+    <figcaption><strong>Warning</strong></figcaption>
+    <p>Always remember that gconftool-2 stores information on your hard drive. I strongly recommend to do not store passwords or any other sensitive data inside gsettings. For example if you want to perform an SSH autologin use SSH keys and don't use Guake indicator scripting!</p>
+        </figure>
+    </p>
+
+
+        </div>
+  </div>
+ <div class="foot">
+            <div class="inner">
+              <div align=center>Site viewed &nbsp;
+    <img
+    src="http://hitwebcounter.com/counter/counter.php?page=5740729&style=0025&nbdigits=5&type=page&initCount=380"
+    width=70 height=20
+    border="0" >
+    times</div>
+    </p>
+    <hr><smaller>Last Revision 24 December, 2014 - Dedicated to my daughters Mariavittoria and
+    Ludovica<br>Special Thanks to all Contributors    </smaller>
+            </div>
+          </div>
+
+        </div>
+
+
+         
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>Docker stop and remove all containers</menu_name>
+      <tab_name/>
+      <command_after_login>docker ps -a | awk '{if (NR&gt;1) printf(" %s", $1)}' | xargs -t --no-run-if-empty -t docker stop
+docker ps -a | awk '{if (NR&gt;1) printf(" %s", $1)}' | xargs -t --no-run-if-empty -t docker rm</command_after_login>
+      <dont_show_guake>no</dont_show_guake>
+      <lfcr>no</lfcr>
+      <guakeindicatorscript>no</guakeindicatorscript>
+    </Host>
+  </HostGroup>
+</Configuration>

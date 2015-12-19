@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>Cvs2MysqlUpdateQuery</menu_name>
+      <tab_name/>
+      <command_after_login>FILE=`zenity --file-selection --title="Select a CSV SOURCE File"` &amp;&amp; FILE2=`zenity --file-selection --title="Select a OUPUT sql file" --save` &amp;&amp; awk -F ";" '{printf ("update mysqltable set fieldcol2=\"%s\",fieldcol3=\"%s\",fieldcol4=\"%s\",fieldcol5=\"%s\" where fieldcol1=\"%s\";\n",$2,$3,$4,$5,$1)}' $FILE &gt; $FILE2</command_after_login>
+      <dont_show_guake>no</dont_show_guake>
+    </Host>
+  </HostGroup>
+</Configuration>

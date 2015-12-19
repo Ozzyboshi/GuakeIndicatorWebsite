@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://guake-indicator-1.0.ozzyboshi.com/favicon.ico">
+
+    <title>Guake indicator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+          
+    <div class="container">
+        <div class="row">
+            <div class="cover-container">
+            <div class="clearfix">
+                <div class="inner">
+                   <div class="title">
+                        <ul class="title">
+                        <li class="title"><img src="images/guake-indicator-icon.png"></li>
+                        <li class="title">Guake Indicator</li>
+                    </ul></div>
+                <nav>
+               <ul class="nav masthead-nav">
+                  <li ><a href="index.html">Home</a></li>
+                  <li><a href="instructions.html">Instructions</a></li>
+                  <li><a href="screenshots.html">Screenshots</a></li>
+                  <li><a href="downloads.html">Downloads</a></li>
+                  <li class="active"><a href="plugins.html">Plugins</a></li>
+                  <li><a href="scripting.html">Scripting</a></li>
+                  <li><a href="issues.html">Issues</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                  <li><a href="license.html">License</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          </div>
+        </div>
+         <div class="row">
+    
+<p>
+
+<H3>Guake indicator plugin system</H3>
+        In order to allow building custom terminal commands quickly, Guake indicator comes with a very simple plugin system.<br>
+        When building a new command click on the "..." button on the right of the "command" text area:<br><br>
+        <p><img src="images/guake-indicator-pluginsystem-img1.png"></p><br>
+        Guake-indicator then scans all the xml and glade files stored locally under the ~/.guake-indicator/plugins directory. If there aren't any present (i.e. after the first launch) the list will be empty so you'll have to add a new one.<br>
+        To add a new plugin click the "add" button. Guake-indicator will query the <a href="plugins/">plugins</a> directory to see which plugins are available and it will copy the selected plugins under the local plugin directory.<br>
+
+        To use a plugin select it from the list and click Apply.<br>
+        A .xml plugin causes Guake indicator to fill in the build command with data retrieved and parsed from the plugin itself.<br>
+        The .glade plugin files, instead, are just helpers for builing new commands using a easy and convenient GUI created with <a href="apt://glade-gtk2">Glade interface designer.</a><br>
+        If you want to create an .xml plugin you could find it easier using the "export" button after creating a new entry.<br><br>
+        When creating a new .glade plugin, remember to :
+        <ul>
+            <li>Put the command you want to run inside the name field of the GtkLabel under the HBOX0 element</li>
+            <li>Set each command option as the name of a GtkEntry</li>
+            <li>Set the name of the Close button to "btn_edit_menu_close_dialog"</li>
+            <li>Set the name of the Save button to "btn_edit_menu_save"</li>
+        </ul>
+        You can take advantage of the <a href="downloads/xmltemplate.xml">XML</a> and <a href="downloads/gladetemplate.glade">GLADE</a> template to build new plugins.
+        If you create a useful plugin that could be of general interest and you want to share it, please contact me so that I can publish and promote it!
+		<br><br><p><a href="plugins/" target="_new" class="btn btn-lg btn-default">See plugin directory <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></a></p>
+</p>
+
+
+
+        </div>
+  </div>
+ <div class="foot">
+            <div class="inner">
+              <div align=center>Site viewed &nbsp;
+    <img
+    src="http://hitwebcounter.com/counter/counter.php?page=5740729&style=0025&nbdigits=5&type=page&initCount=380"
+    width=70 height=20
+    border="0" >
+    times</div>
+    </p>
+    <hr><smaller>Last Revision 24 December, 2014 - Dedicated to my daughters Mariavittoria and
+    Ludovica<br>Special Thanks to all Contributors
+    </smaller>
+            </div>
+          </div>
+
+        </div>
+
+
+         
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

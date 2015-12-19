@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name></menu_name>
+      <tab_name></tab_name>
+      <command_after_login></command_after_login>
+    </Host>
+  </HostGroup>
+</Configuration>

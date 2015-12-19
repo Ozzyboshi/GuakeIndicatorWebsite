@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>Extract</menu_name>
+      <tab_name/>
+      <command_after_login>FILE=`zenity --file-selection --title="Select a
+      File"`
+if [ -f $FILE ] ; then 
+	case $FILE in 
+        *.tar.bz2)   tar xjf $FILE     ;; 
+        *.tar.gz)    tar xzf $FILE     ;; 
+        *.bz2)       bunzip2 $FILE     ;; 
+        *.rar)       unrar e $FILE     ;; 
+        *.gz)        gunzip $FILE      ;; 
+        *.tar)       tar xf $FILE      ;; 
+        *.tbz2)      tar xjf $FILE     ;; 
+        *.tgz)       tar xzf $FILE     ;; 
+        *.zip)       unzip $FILE       ;; 
+        *.Z)         uncompress $FILE  ;; 
+        *.7z)        7z x $FILE        ;; 
+        *)     echo "'$FILE' cannot be extracted via extract()" ;; 
+         esac 
+     else 
+         echo "'$FILE' is not a valid file" 
+     fi </command_after_login>
+      <dont_show_guake>yes</dont_show_guake>
+    </Host>
+  </HostGroup>
+</Configuration>

@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://guake-indicator-1.0.ozzyboshi.com/favicon.ico">
+
+    <title>Guake indicator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+          
+    <div class="container">
+        <div class="row">
+            <div class="cover-container">
+            <div class="clearfix">
+                <div class="inner">
+                    <div class="title">
+                        <ul class="title">
+                        <li class="title"><img src="images/guake-indicator-icon.png"></li>
+                        <li class="title">Guake Indicator</li>
+                    </ul></div>
+                <nav>
+                <ul class="nav masthead-nav">
+                  <li><a href="index.html">Home</a></li>
+                  <li class="active"><a href="instructions.html">Instructions</a></li>
+                  <li><a href="screenshots.html">Screenshots</a></li>
+                  <li><a href="downloads.html">Downloads</a></li>
+                  <li><a href="plugins.html">Plugins</a></li>
+                  <li><a href="scripting.html">Scripting</a></li>
+                  <li><a href="issues.html">Issues</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                  <li><a href="license.html">License</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          </div>
+        </div>
+         <div class="row">
+     <h3>What is Guake indicator?</h3>
+    Guake indicator is a compact and convenient Ubuntu Appindicator that lets you send commands and customized tasks to     <a href="http://guake.org">Guake</a> terminal.
+      Guake is a free, open source, top-down terminal written in Python by Max Ulidtko,Pierre-Yves Chibon,
+      Aleksandar Krsteski, Lincoln de Sousa, Gabriel Falcão and it's part of the Debian and Ubuntu project.<br>
+      Although Guake indicator was meant for Ubuntu it should work on any Debian based Operating System using The Gnome Desktop               Environment.
+        <p><strong>This page refers to guake-indicator version 1.0 and later, if you want to read the old documentation about previous releases click <a
+        href="old/">here</a>.</strong></p>
+      <p>Guake-indicator sticks to your "Ubuntu Indicator Area" and displays your
+      customized command retrieved from
+      ~/.guake.indicator/guake-indicator.xml. If this file doesn't
+          exist, Guake Indicator will create a small default one that you can use as a base to build your own configuration file depending on your needs.</p>
+      <p>
+      You can customize the configuration file using the Guake indicator built-in GUI under the "Edit Menu" section or, as an alternative, you can do it on your own with your favorite
+      text/xml editor.
+          The guake-indicator.xml fields
+      are quite self-explanatory, however, I'm going to give you a more in-depth
+      description of each one:
+          <div class="jumbotron" style="background-color:#444040">
+              <p>
+      <ul>
+        <li><b>menu_name :</b>the name that will show up in the indicator itself
+        <li><b>tab_name : </b>the name of the Guake terminal tab once it is opened (leave blank if you don't want automatic autorenaming)</li>
+        <li><b>command_after_login :</b> command to send to Guake through his DBUS interface</li>
+          <li><b>dont_show_guake :</b> if set to yes Guake is not shown after command execution</li>
+          <li><b>open_in_tab :</b> The index of the Guake tab where Guake indicator will execute the command. Guake assigns index 0 to the first tab so put in this field the nth tab-1
+          number. If this tag has the attribute named="yes" it contains the name of the Guake tab (see <a href="issues.html#findtabbynameissue">Guake indicator select tab by name issue</a> for more informations)
+          <br>If this field contains the value '-1', Guake indicator will
+          execute the command in the currently selected Guake tab (only from
+          version 1.1)</li>
+          <li><b>lfcr</b> : if set to yes a LF (Line Feed) + CR (Carriage return) is sent to Guake after each line. Otherwise, only a line feed (ascii code 10) is sent.</li>
+          <li><b>guakeindicatorscript</b> : if set to yes enables the Guake indicator scripting function (see related <a href="scripting.html#guakeindicatorscriptingsystem">scripting section</a>)</li>
+      </ul>
+             </p> </div>
+        
+      The above xml field are all optional (except menu_name) and  must be stored within a XML Host parent field which in turn is enclosed within a HostGroup field.<br>
+        For more information about how the configuration file must be created  you can download the <a href="downloads/guake-indicator.xsd">XSD Schema validation file.</a>
+    </p> 
+    <p>
+         <h3>Launching at startup</h3>
+    You can launch Guake indicator at startup using Ubuntu
+      "startup application" then fill in the form according to the following screenshot:<br><br><p><img class="img-rounded"
+      src="images/add.png"></p><br>
+    If Guake is not started, Guake indicator, when invoked, will launch it automatically.
+        
+        </p> 
+    
+    <p>
+      
+      <h3>Requirements for Guake indicator</h3>
+    
+      <p>For proper compilation and functionality of Guake indicator, the
+        following packages are REQUIRED:<br>
+      </p>
+      <ul>
+      	<li>libappindicator-dev</li>
+      	<li>libcairo2-dev (>= 1.10)</li>
+      	<li>libdbus-1-dev</li>
+      	<li>libdbus-glib-1-dev</li>
+      	<li>libglib2.0-dev (>=2.35.4)</li>
+      	<li>libgtk-3-dev (>=3.1.4)</li>
+      	<li>libjson-c-dev (for backward compatibility)</li>
+        <li>libxml2-dev</li>
+        <li>python-beautifulsoup</li>
+        <li>libgconf2-dev</li>
+      </ul>
+      
+      </p>
+
+    
+
+        </div>
+  </div>
+ <div class="foot">
+            <div class="inner">
+              <div align=center>Site viewed &nbsp;
+    <img
+    src="http://hitwebcounter.com/counter/counter.php?page=5740729&style=0025&nbdigits=5&type=page&initCount=380"
+    width=70 height=20
+    border="0" >
+    times</div>
+    </p>
+    <hr><smaller>Last Revision 24 December, 2014 - Dedicated to my daughters Mariavittoria and
+    Ludovica<br>Special Thanks to all Contributors.
+    </smaller>
+            </div>
+          </div>
+
+        </div>
+
+
+         
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

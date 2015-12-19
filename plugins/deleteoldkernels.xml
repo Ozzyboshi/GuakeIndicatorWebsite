@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>Delete old Kernels</menu_name>
+      <tab_name>kd</tab_name>
+      <command_after_login>sudo apt-get remove --purge $(dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d')
+</command_after_login>
+      <dont_show_guake>no</dont_show_guake>
+      <lfcr>no</lfcr>
+      <guakeindicatorscript>no</guakeindicatorscript>
+    </Host>
+  </HostGroup>
+</Configuration>

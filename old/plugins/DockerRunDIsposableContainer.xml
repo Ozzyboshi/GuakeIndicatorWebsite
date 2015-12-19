@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>Docker run disposable container with bash</menu_name>
+      <tab_name/>
+      <command_after_login>IMAGES=`docker images | awk '{if (NR&gt;1) printf(" FALSE %s:%s  ",$1,$2)}'`
+OPTIONS=$(zenity  --list  --text "Select image to run" --radiolist  --column "Pick" --column "Images" $IMAGES)
+if [ -n "$OPTIONS" ]; then 
+docker run  --rm -i -t $OPTIONS /bin/bash
+fi</command_after_login>
+      <dont_show_guake>yes</dont_show_guake>
+      <lfcr>no</lfcr>
+      <guakeindicatorscript>no</guakeindicatorscript>
+    </Host>
+  </HostGroup>
+</Configuration>

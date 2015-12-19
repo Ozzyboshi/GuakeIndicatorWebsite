@@ -1,0 +1,74 @@
+{
+  "data":[
+    {
+      "label":"SSH Hosts"
+    },
+    {
+      "hostname":"localhost",
+      "login":"utente",
+      "menu_name":"SSH on localhost",
+      "tab_name":"LocalHost"
+    }
+  ],
+  "MYSQL":{
+    "label":"Mysql Servers",
+    "data":[
+      {
+        "label":"Local Mysql Servers"
+      },
+      {
+        "hostname":"localhost",
+        "login":"utente",
+        "menu_name":"Mysql on localhost",
+        "tab_name":"Mysql",
+        "command_after_login":"mysql -u root --pass --host localhost -A mysql",
+        "remote_command":"yes"
+      },
+      {
+        "hostname":"127.0.0.1",
+        "login":"utente",
+        "menu_name":"Mysql on 127.0.0.1",
+        "tab_name":"Mysql on 127.0.0.1",
+        "command_after_login":"mysql -u root --pass --host 127.0.0.1 -A mysql",
+        "remote_command":"yes"
+      },
+      {
+        "label":"Remote Mysql Servers"
+      },
+      {
+        "hostname":"192.168.1.1",
+        "login":"utente",
+        "menu_name":"Mysql on 192.168.1.1",
+        "tab_name":"Mysql on 192.168.1.1",
+        "command_after_login":"mysql -u root --pass --host 192.168.1.1 -A mysql",
+        "remote_command":"yes"
+      }
+    ]
+  },
+  "MISC":{
+    "label":"Localhost tasks",
+    "data":[
+      {
+        "hostname":"",
+        "login":"",
+        "menu_name":"tmp folder",
+        "tab_name":"tmp folder",
+        "command_after_login":"cd \/tmp"
+      },
+      {
+        "hostname":"",
+        "login":"",
+        "menu_name":"top",
+        "tab_name":"top",
+        "command_after_login":"top"
+      },
+      {
+        "hostname":"",
+        "login":"",
+        "menu_name":"ping www.google.com",
+        "tab_name":"Ping google",
+        "command_after_login":"ping www.google.com"
+      }
+    ]
+  }
+}

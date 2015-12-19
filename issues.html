@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://guake-indicator-1.0.ozzyboshi.com/favicon.ico">
+
+    <title>Guake indicator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="">
+          
+    <div class="container">
+        <div class="row">
+            <div class="cover-container">
+            <div class="clearfix">
+                <div class="inner">
+                <div class="title">
+                        <ul class="title">
+                        <li class="title"><img src="images/guake-indicator-icon.png"></li>
+                        <li class="title">Guake Indicator</li>
+                    </ul></div>
+                <nav>
+               <ul class="nav masthead-nav">
+                  <li ><a href="index.html">Home</a></li>
+                  <li><a href="instructions.html">Instructions</a></li>
+                  <li><a href="screenshots.html">Screenshots</a></li>
+                  <li><a href="downloads.html">Downloads</a></li>
+                  <li><a href="plugins.html">Plugins</a></li>
+                  <li ><a href="scripting.html">Scripting</a></li>
+                  <li class="active"><a href="issues.html">Issues</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                  <li><a href="license.html">License</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          </div>
+        </div>
+         <div class="row">
+    
+<p>
+
+ <H3>Guake version < 0.4.5 on Ubuntu 13.10, 14.04 and 14.10 show screen issue</H3>
+    <p>Each time a Guake indicator entry is clicked, unless the entry has the option 'dont show Guake' activated, Guake shows up.
+    This is accomplished by a dbus call to the "Guake show interface".
+    Unfortunately this interface is available only from Guake 0.4.5, in previous
+    versions there's only a "Guake show-hide interface".
+    The show-hide interface causes Guake indicator to hide Guake if it's already
+    on top, therefore, on old Guake versions, Guake hides himself if you click on a
+    Guake indicator entry while Guake terminal is shown on the screen.
+    If you are running Ubuntu older than 15.04 you can upgrade to Guake version 0.4.5 from <a
+    href="https://launchpad.net/~ulidtko/+archive/guake/+packages">https://launchpad.net/~ulidtko/+archive/guake/+packages</a>.
+    Since Ubuntu 15.04 Vivid Vervet comes with Guake 0.5, this issue should not occur in future Ubuntu releases.
+
+</p>
+     
+     <p>
+     <h3>Guake version >= 0.4.3-3 on Ubuntu 13.10 autorenaming
+    issue</h3>
+    	<p>I noticed that from version 13.10, Ubuntu ships with a Guake that auto-renames
+    	each tab every time a change dir command is issued. In this way the
+    	'tab_name' field within guake-indicator.xml is almost completely useless
+    	because Guake overrides this value.
+    	In order to solve this:
+    	<ul>
+    		<li> install gconf-editor package to edit Guake
+	    	options ( sudo apt-get install gconf-editor ).
+	    	<li>Execute gconf-editor from a terminal
+	    	<li>Browse to /apps/guake/general and unmark use_vte_titles key
+	    	<li>restart Guake
+    	</ul>     
+     </p>
+    
+    <p>
+         <a name=findtabbynameissue></a>
+    <H3>Guake indicator select tab by name issue</H3>
+    Guake indicator provides the ability to send a custom command on the first Guake tab with a certain name, this is accomplished by selecting the "first Guake tab named" radio option and then writing the name of the tab within the textbox on the right side.
+        This two fields are by default disabled because Guake interfaces don't offer this feature out-of-the box.
+        To enable this feature attach this code at the end of the dbusiface.py file (if you use copy and paste pay attention at the indentation, it's a python script and indentation matters a lot).<br><br>
+        <pre>
+        @dbus.service.method(DBUS_NAME, in_signature='i', out_signature='s')
+        &nbsp;&nbsp;&nbsp;&nbsp;def get_gtktab_name(self, tab_index=0):
+        &nbsp;&nbsp;&nbsp;&nbsp;return self.guake.tabs.get_children()[tab_index].get_label()</pre>
+    The dbusiface.py is usually located in the /usr/lib/python2.7/dist-packages/guake/ or /usr/local/lib/python2.7/dist-packages/guake/ directory (the latter is the case if you compiled from the Guake source code).
+        
+        I put the above python code in the data/guake-patch.py file inside the source tarball (another option is to download it clicking <a href="downloads/guake-patch.py">here</a>) so you can patch Guake typing (as root):
+	<br><br>
+        <pre>
+        cat guake-patch.py >> /usr/lib/python2.7/dist-packages/guake/dbusiface.py
+        </pre>
+	<br><br>
+        After the patch has been applied restart Guake: I usually kill him with 
+	<br><br>
+        <pre>killall /usr/bin/python /usr/bin/guake</pre>
+	<br><br>
+        then close and reopen Guake indicator, this causes Guake to restart.
+        I hope the Guake team will include this little piece of code in their next releases, for now you have to do that manually.
+
+    </p>
+
+    <p>
+<H3>Reporting Bugs</H3>
+      <p>Bugs may be reported to the author by submitting a bug report to <a href="mailto:gun101@email.it">gun101@email.it</a>
+        or using the launchpad bug tracking system</p>
+    
+
+
+        </div>
+  </div>
+ <div class="foot">
+            <div class="inner">
+              <div align=center>Site viewed &nbsp;
+    <img
+    src="http://hitwebcounter.com/counter/counter.php?page=5740729&style=0025&nbdigits=5&type=page&initCount=380"
+    width=70 height=20
+    border="0" >
+    times</div>
+    </p>
+    <hr><smaller>Last Revision 24 December, 2014 - Dedicated to my daughters Mariavittoria and
+    Ludovica<br>Special Thanks to all Contributors    </smaller>
+            </div>
+          </div>
+
+        </div>
+
+
+         
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

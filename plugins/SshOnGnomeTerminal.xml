@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>SSH on gnome-terminal</menu_name>
+      <tab_name/>
+      <command_after_login>/bin/bash
+wids=$(xprop -root | grep '_NET_CLIENT_LIST.*(WINDOW)' | sed 's/^.*#//' | sed 's/,/\n/g' | sort -u )
+pid=`pidof gnome-terminal`
+if [ $? -ne 0 ]
+then
+gnome-terminal -x sh -c 'ssh root@localhost; exec bash' &amp;
+sleep 1
+pid=`pidof gnome-terminal`
+fi
+string="_NET_WM_PID(CARDINAL) = "$pid
+for w in $wids
+do
+xprop -id $w | grep "$string" &gt; /dev/null
+if [ $? -eq 0 ]
+then
+w2=`xprop -id $w`
+xdotool windowfocus $w
+xdotool key ctrl+shift+t
+xdotool type "setxkbmap it"
+xdotool key Return
+xdotool type "df"
+xdotool key Return
+wmctrl -i -a $w
+break
+fi
+done</command_after_login>
+      <dont_show_guake>yes</dont_show_guake>
+    </Host>
+  </HostGroup>
+</Configuration>

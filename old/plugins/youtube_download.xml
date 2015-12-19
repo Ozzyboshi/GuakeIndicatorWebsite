@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>Youtube downloader</menu_name>
+      <tab_name>yt</tab_name>
+      <command_after_login>VARIABLE=$(zenity --entry --title="Youtube download" --text="Youtube URL" )
+rc=$?
+if [[ $rc == 0 ]] ; then
+        cd ~/youtube
+        youtube-dl "$VARIABLE"
+fi</command_after_login>
+      <dont_show_guake>no</dont_show_guake>
+    </Host>
+  </HostGroup>
+</Configuration>

@@ -1,0 +1,92 @@
+<site>
+	<description url="http://guake-indicator.ozzyboshi.com/plugins/"/>
+	<feature url="mysql.glade" id="com.ozzyboshi.plugins.mysql" version="1"
+	description="Mysql client GUI helper">
+		<category name="Database"/>
+	</feature>
+	<feature url="ssh.glade" id="com.ozzyboshi.plugins.ssh" version="1" 
+	description="ssh client GUI helper">
+		<category name="Protocol"/>
+	</feature>
+	<feature url="youtube_download.xml" id="com.ozzyboshi.plugins.youtube_download" version="1" 
+	description="Script to download videos from youtube (you need yt-downloader installed)">
+		<category name="Web"/>
+	</feature>
+	
+	<feature url="awk.glade" id="com.ozzyboshi.plugins.awk" version="1" 
+	description="awk GUI helper">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="Cvs2MysqlUpdateQuery.xml"
+	id="com.ozzyboshi.plugins.Cvs2MysqlUpdateQuery" version="1" 
+	description="Script to convert cvs files to mysql queries">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="SshOnGnomeTerminal.xml"
+	id="com.ozzyboshi.plugins.SshOnGnomeTerminal" version="1" 
+	description="Open a new gnome terminal">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="mosh.glade"
+	id="com.ozzyboshi.plugins.mosh" version="1"  
+	description="mosh client GUI helper">
+		<category name="Protocol"/>
+	</feature>
+	
+	<feature url="ipaddresses.xml"
+	id="com.ozzyboshi.plugins.ipaddresses" version="1" 
+	description="Script to get your local and public ip address">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="extract.xml"
+	id="com.ozzyboshi.plugins.extract" version="1" 
+	description="Extract any kind of archive">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="lstree.xml"
+	id="com.ozzyboshi.plugins.lstree" version="1" 
+	description="Display the directory structure recursively in a tree format.">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="showactiveports.xml"
+	id="com.ozzyboshi.plugins.showactiveports" version="1" 
+	description="Show the active ports">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="intercept.xml"
+	id="com.ozzyboshi.plugins.intercept" version="1" 
+	description="Intercept the stdout and stderr of a process: intercept [some PID]. Note that you will need strace installed.">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="deleteoldkernels.xml"
+	id="com.ozzyboshi.plugins.deleteoldkernels" version="1" 
+	description="Delete old kernels in a Ubuntu system.">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="DockerRunDisposableContainer.xml"
+	id="com.ozzyboshi.plugins.dockerrundisposablecontainer" version="1" 
+	description="Run a disposable container from a Docker image.">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="DockerStopAndRemoveAllContainers.xml"
+	id="com.ozzyboshi.plugins.dockerstopandremoveallcontainers" version="1" 
+	description="Stop and remove all docker containers.">
+		<category name="Gnu/Linux"/>
+	</feature>
+	
+	<feature url="DockerExportDatastore.xml"
+	id="com.ozzyboshi.plugins.dockerexportdatastore" version="1" 
+	description="Export data from a docker container datastore.">
+		<category name="Gnu/Linux"/>
+	</feature>
+</site>

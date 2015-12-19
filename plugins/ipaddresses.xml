@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>Ip addresses</menu_name>
+      <tab_name/>
+      <command_after_login>ip addr | awk '/inet / {sub(/\/.*/, "", $2); print $2}'
+dig +short myip.opendns.com @resolver1.opendns.com</command_after_login>
+      <dont_show_guake>no</dont_show_guake>
+    </Host>
+  </HostGroup>
+</Configuration>

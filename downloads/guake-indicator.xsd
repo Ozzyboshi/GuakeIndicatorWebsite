@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="Configuration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="HostGroup"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HostGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Host"/>
+      </xs:sequence>
+      <xs:attribute name="label" type="xs:NCName"/>
+      <xs:attribute name="name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Host">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="menu_name"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="tab_name"/>
+          <xs:element ref="command_after_login"/>
+          <xs:element ref="dont_show_guake"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="open_in_tab"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="lfcr"/>
+          <xs:element ref="guakeindicatorscript"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attribute name="label" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="menu_name" type="xs:string"/>
+  <xs:element name="tab_name" type="xs:string"/>
+  <xs:element name="command_after_login" type="xs:string"/>
+  <xs:element name="dont_show_guake" type="xs:NCName"/>
+  <xs:element name="open_in_tab">
+    <xs:complexType mixed="true">
+      <xs:attribute name="named" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lfcr" type="xs:NCName"/>
+  <xs:element name="guakeindicatorscript" type="xs:NCName"/>
+</xs:schema>

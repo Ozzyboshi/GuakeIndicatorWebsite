@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <HostGroup>
+    <Host>
+      <menu_name>Intercept</menu_name>
+      <tab_name/>
+      <command_after_login>sudo strace -ff -e trace=write -e write=1,2
+      -p</command_after_login>
+      <dont_show_guake>no</dont_show_guake>
+    </Host>
+  </HostGroup>
+</Configuration>
