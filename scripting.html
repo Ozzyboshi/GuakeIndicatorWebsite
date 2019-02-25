@@ -74,9 +74,9 @@
     For example let's say you want to test if a particular tcp port is open from a <u>remote</u> shell and you want to input the target ip and port from keyboard with your local zenity (https://help.gnome.org/users/zenity/stable/), you could try something like this:
         <br><br>
         <pre>
-        &#60;#gconftool-2 --type=string --set "/apps/guake-indicator/varip" $(zenity --entry --title="Enter dest ip" --text="Enter dest ip")
-        &#60;#gconftool-2 --type=string --set "/apps/guake-indicator/varport" $(zenity --entry --title="Enter dest port" --text="Enter dest port")
-        ssh user@whatever  nc -vn &#60;!varip!&#62; &#60;!varport!&#62;
+        &#60;#gsettings set org.guake-indicator.data param1 $(zenity --entry --title="Enter dest ip" --text="Enter dest ip")
+        &#60;#gsettings set org.guake-indicator.data param2 $(zenity --entry --title="Enter dest port" --text="Enter dest port")
+        ssh user@whatever  nc -vn &#60;!param1!&#62; &#60;!param2!&#62;
         </pre><br>
         
         In the above example Guake indicator calls Zenity to display an interactive form in your local machine.The stdout of Zenity is then passed as an argumento to gconftool-2.
